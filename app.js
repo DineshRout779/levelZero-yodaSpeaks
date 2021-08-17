@@ -10,13 +10,16 @@ const getTranslationUrl = (text) => {
 
 const handleClick = () => {
   text = textInput.value;
-
-  fetch(getTranslationUrl(text))
-    .then((response) => response.json())
-    .then((responseData) => {
-      textOutput.textContent = responseData.contents.translated;
-    })
-    .catch((err) => console.log(err));
+  if (text === '') {
+    alert('Please enter some texts!');
+  } else {
+    fetch(getTranslationUrl(text))
+      .then((response) => response.json())
+      .then((responseData) => {
+        textOutput.textContent = responseData.contents.translated;
+      })
+      .catch((err) => console.log(err));
+  }
 };
 
 btnTranslate.addEventListener('click', handleClick);
