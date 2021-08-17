@@ -10,7 +10,7 @@ const getTranslationUrl = (text) => {
 
 const handleClick = () => {
   text = textInput.value;
-  if (text === '') {
+  if (text.trim().length === 0) {
     alert('Please enter some texts!');
   } else {
     fetch(getTranslationUrl(text))
